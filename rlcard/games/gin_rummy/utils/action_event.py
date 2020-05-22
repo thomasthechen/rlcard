@@ -8,16 +8,17 @@ from rlcard.core import Card
 
 from . import utils as utils
 
-''' Action_ids:
-        0 -> score_player_0_id
-        1 -> score_player_1_id
-        2 -> draw_card_id
-        3 -> pick_up_discard_id
-        4 -> declare_dead_hand_id
-        5 -> gin_id
-        6 to 57 -> discard_id card_id
-        58 to 109 -> knock_id card_id
-'''
+# ====================================
+# Action_ids:
+#        0 -> score_player_0_id
+#        1 -> score_player_1_id
+#        2 -> draw_card_id
+#        3 -> pick_up_discard_id
+#        4 -> declare_dead_hand_id
+#        5 -> gin_id
+#        6 to 57 -> discard_id card_id
+#        58 to 109 -> knock_id card_id
+# ====================================
 
 score_player_0_action_id = 0
 score_player_1_action_id = 1
@@ -33,6 +34,12 @@ class ActionEvent(object):
 
     def __init__(self, action_id: int):
         self.action_id = action_id
+
+    def __eq__(self, other):
+        result = False
+        if isinstance(other, ActionEvent):
+            result = self.action_id == other.action_id
+        return result
 
     @staticmethod
     def get_action_num():

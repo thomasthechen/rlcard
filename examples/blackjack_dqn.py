@@ -5,9 +5,9 @@ import tensorflow as tf
 import os
 
 import rlcard
-from rlcard.agents.dqn_agent import DQNAgent
-from rlcard.utils.utils import set_global_seed, tournament
-from rlcard.utils.logger import Logger
+from rlcard.agents import DQNAgent
+from rlcard.utils import set_global_seed, tournament
+from rlcard.utils import Logger
 
 import sys
 # insert at 1, 0 is the script path (or '' in REPL)
