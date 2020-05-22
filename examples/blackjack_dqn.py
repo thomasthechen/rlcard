@@ -9,9 +9,30 @@ from rlcard.agents.dqn_agent import DQNAgent
 from rlcard.utils.utils import set_global_seed, tournament
 from rlcard.utils.logger import Logger
 
+import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+sys.path.insert(1, '/home/thomasthechen/code/ml/rlcard/rlcard/envs/')
+
+from blackjack2 import BlackjackEnv
+
 # Make environment
-env = rlcard.make('blackjack')
-eval_env = rlcard.make('blackjack')
+# env = rlcard.make('blackjack2')
+# eval_env = rlcard.make('blackjack2')
+
+env = BlackjackEnv({
+    "allow_step_back": True,
+    "allow_raw_data": True,
+    'single_agent_mode' : False,
+    'active_player' : 1,
+    'record_action' : False
+})
+eval_env = BlackjackEnv({
+    "allow_step_back": True,
+    "allow_raw_data": True,
+    'single_agent_mode' : False,
+    'active_player' : 1,
+    'record_action' : False
+})
 
 # Set the iterations numbers and how frequently we evaluate performance
 evaluate_every = 100
